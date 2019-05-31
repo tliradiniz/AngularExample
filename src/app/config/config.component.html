@@ -1,0 +1,11 @@
+<h2>Basic Request</h2>
+<p>
+  <Label>Enviando dados para : http://validate.jsontest.com com post()</Label>  
+  </p>
+  <input type="text" [(ngModel)] = "textbox1">
+  <input type="text" value = "{{data | json}}">
+  <button (click)="onTestPost(textbox1)">Teste POST Request</button>
+  <p>Resultado : {{postData}}</p>
+<button type="button" (click)="makeRequest()">Make Request</button>
+<div *ngIf="loading">loading...</div>
+<pre>Data Obtained is: {{ data | json }}</pre>aa
