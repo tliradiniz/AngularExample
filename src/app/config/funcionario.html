@@ -1,0 +1,46 @@
+<h2>Requisição Básica</h2>
+<p>
+  <Label>Enviando dados para : http://localhost:8080/SWBackend/jaxrs/Person com post()</Label>
+  </p>
+  <form [formGroup]="postForm" (ngSubmit)="onTestPost('http://localhost:8080/SWBackend/jaxrs/Person/')">
+    <div class="left">
+      Matricula:
+  </div>
+  <div class="right">
+    <input type="text" formControlName="matricula"><br>
+  </div>
+  <div class="left">
+    Nome:
+</div>
+<div class="right">
+  <input type="text" formControlName="nome"><br>
+</div>
+<div class="left">
+  Salario:
+</div>
+<div class="right">
+  <input type="text" formControlName="salario"><br>
+</div>
+
+
+    <ng-template [ngIf]="data != null" [ngIfElse]="result">
+      <div class="left">
+        Matricula / Nome / Salário:
+      </div>
+      <div class="right">
+        <input type="text" value= "{{data.matricula}} {{data.nome}} {{data.salario}}">
+      </div>
+    </ng-template>
+    <ng-template #result>
+      <div class="left">
+        Matricula / Nome / Salário:
+      </div>
+      <div class="right">
+        <input type="text" value = "">
+      </div>
+    </ng-template>
+    <button type="submit">Teste POST Request</button>
+  </form>
+<button type="button" (click)="request('http://localhost:8080/SWBackend/jaxrs/Person/')">Make Request</button>
+<div *ngIf="loading">loading...</div>
+<pre>Data Obtained is: {{ data | json }}</pre>

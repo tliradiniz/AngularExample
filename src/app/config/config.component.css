@@ -1,0 +1,15 @@
+input[type="text"] {
+  width: 400px;
+}
+
+.left {
+  width: 30%;
+  float: left;
+  text-align: right;
+}
+.right {
+  width: 65%;
+  margin-left: 10px;
+  float:left;
+}
+

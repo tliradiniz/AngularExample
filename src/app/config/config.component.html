@@ -2,9 +2,24 @@
 <p>
   <Label>Enviando dados para : http://localhost:8080/SWBackend/jaxrs/Person com post()</Label>
   </p>
-  <input type="text" [(ngModel)] = "textbox1">
-  <input type="text" value = "{{data.field}}">
-  <button (click)="onTestPost(textbox1, 'http://localhost:8080/SWBackend/jaxrs/Person/')">Teste POST Request</button>
-<button type="button" (click)="makeRequest()">Make Request</button>
+  <form [formGroup]="postForm" (ngSubmit)="onTestPost('http://localhost:8080/SWBackend/jaxrs/Person/')">
+    Field:<input type="text" formControlName="field"><br>
+    Teste:<input type="text" formControlName="teste"><br>
+    Nome:<input type="text" formControlName="nome"><br>
+    Idade:<input type="text" formControlName="idade"><br>
+    Nascimento:<input type="text" formControlName="nascimento"><br>
+    <ng-template [ngIf]="data != null" [ngIfElse]="result">
+      <div>
+        Field + Teste:<input type="text"  value = "{{data.field}} {{data.teste}} {{data.nome}}">
+      </div>
+    </ng-template>
+    <ng-template #result>
+      <div>
+        Field + Teste:<input type="text"  value = "">
+      </div>
+    </ng-template>
+    <button type="submit">Teste POST Request</button>
+  </form>
+<button type="button" (click)="Request('http://localhost:8080/SWBackend/jaxrs/Person/')">Make Request</button>
 <div *ngIf="loading">loading...</div>
 <pre>Data Obtained is: {{ data | json }}</pre>
