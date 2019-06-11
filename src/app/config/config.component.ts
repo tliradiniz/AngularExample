@@ -14,7 +14,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ConfigComponent {
 
-
+  clicked: boolean = false;
   data: string;
   postForm: FormGroup;
 
@@ -28,7 +28,7 @@ export class ConfigComponent {
 
   }
   async onTestPost(link: string) {
-
+    this.clicked = true;
    this.httpService.requestPost(link, this.postForm);
    await this.delay(100);
    this.httpService.getJSON(link);

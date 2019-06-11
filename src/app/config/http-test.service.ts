@@ -11,6 +11,7 @@ export class HttpTestService {
   data: any;
   loading: boolean;
 
+
   constructor(private http: Http) { }
 
 
@@ -24,7 +25,7 @@ export class HttpTestService {
         postJSON(link: string, postForm: FormGroup) {
           console.log(postForm.value);
             let json = JSON.stringify(postForm.value);
-            let params = 'json=' + json;
+            let params = json;
             let cabe = new Headers();
             cabe.append('Content-Type', 'application/json');
             return this.http.post(link,
